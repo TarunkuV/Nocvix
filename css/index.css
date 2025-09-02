@@ -1,0 +1,166 @@
+/* ===== Base Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* ===== Navbar Container ===== */
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* left | logo | right */
+  align-items: center;
+  padding: 19px 60px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  position: relative; /* so Sign In can be positioned absolutely */
+}
+
+/* Sign In independent from grid */
+.navbar-signin {
+  position: absolute;
+  right: 60px;   /* matches navbar padding */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Left links */
+.navbar-left {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 70px;
+  gap: 40px;
+}
+
+/* Center logo stays in middle column */
+.navbar-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* Right links */
+.navbar-right {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 70px;
+  gap: 40px;
+}
+
+/* Nav links underline */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Logo */
+.logo img { 
+  height: 60px;
+  padding-top: 5px;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+}
+
+/* Sign In button */
+.signin-btn {
+  position: relative;
+  padding: 8px 20px;
+  background-color: transparent;
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;   /* rectangle with slightly soft corners */
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+}
+
+/* Horizontal borders */
+.signin-btn::before,
+.signin-btn::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: black;
+  transition: width 0.3s ease;
+}
+
+.signin-btn::before {
+  bottom: 0;
+  left: 0;   /* starts bottom-left */
+}
+
+.signin-btn::after {
+  top: 0;
+  right: 0;  /* top-right */
+}
+
+/* Vertical borders */
+.signin-btn span::before,
+.signin-btn span::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 0;
+  background: black;
+  transition: height 0.3s ease;
+}
+
+.signin-btn span::before {
+  top: 0;
+  left: 0;   /* left side */
+}
+
+.signin-btn span::after {
+  bottom: 0;
+  right: 0;  /* right side */
+}
+
+/* Hover state */
+.signin-btn:hover {
+  background: transparent;
+  color: black;
+}
+
+.signin-btn:hover::before,
+.signin-btn:hover::after {
+  width: 100%;
+}
+
+.signin-btn:hover span::before,
+.signin-btn:hover span::after {
+  height: 100%;
+}
+
